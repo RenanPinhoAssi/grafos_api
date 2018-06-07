@@ -45,7 +45,7 @@
                         >-</button>
                     </td>
                     <td>
-                        {{key}}
+                        {{key}}{{ctrl.G.mapa_raizes[key]?'*':''}}
                     </td>
                     <td>
                         <span ng-repeat="(adjacente,raw) in value.mapa_adjacentes">

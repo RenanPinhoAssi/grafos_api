@@ -1,10 +1,10 @@
 class vertice{
     constructor(label){
-        this.label = label;
+        this.label           = label;
         this.mapa_adjacentes = {};
-        this.mapa_parentes = {};
-        this.grau = 0;
-        this.grauEntrada = 0;
+        this.mapa_parentes   = {};
+        this.grau            = 0;
+        this.grauEntrada     = 0;
     }
 
     link(label,vertice){
@@ -22,7 +22,7 @@ class vertice{
        this.grau--;
     }
 
-    unlinkParent(label,vertice){
+    unlinkParent(label){
         delete this.mapa_parentes[label];
         this.grauEntrada--;
     }

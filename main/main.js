@@ -10,6 +10,7 @@ angular.module('homework', [])
         }
         return [label];
     }
+
     vm.addNewVertex = function(label){
         let groupLabel = checkLabel(label);
         for(let i in groupLabel){
@@ -43,6 +44,12 @@ angular.module('homework', [])
         vm.G.remove_vertice(label);
     }
     
-
+    vm.topologicalSort = function(){
+        // Array.unshift()
+        let topologicalSet = {};
+        let _G             = Object.assign({}, vm.G);
+        
+        //let startSet       = vm.G.mapa_raizes;
+    }
 
 });
