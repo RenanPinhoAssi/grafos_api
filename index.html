@@ -1,0 +1,96 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 5px;
+            text-align: left;
+        }
+        button:disabled {
+            background: #aaa;
+        }
+        .delete {
+            background: #d55;
+        }
+        button {
+            background: #5d5;
+        }
+        ::-webkit-input-placeholder{
+            text-align: center;
+        }
+        :-moz-placeholder{
+            text-align: center;
+        }
+    </style>
+    <body ng-app="homework" ng-controller="appController as ctrl">
+        <div style="width:50%">
+            <table style="width:100%">
+                <tr>
+                    <th colspan="2">Vértice</th>
+                    <th colspan="2">Adjacentes</th> 
+                </tr>
+                <tr ng-repeat="(key,value) in ctrl.G.mapa_vertices">
+                    <td style="width:20%">
+                        <button class="delete" 
+                            style="width:100%; float:right"
+                            ng-click="ctrl.deleteVertex(key)"
+                        >-</button>
+                    </td>
+                    <td>
+                        {{key}}
+                    </td>
+                    <td>
+                        <span ng-repeat="(adjacente,raw) in value.mapa_adjacentes">
+                            ({{adjacente}})
+                        </span>
+                    </td> 
+                    <td style="width:20%">
+                        <input style="width:50%; float:left"
+                            ng-model="neighbour"
+                        ></input>
+                        <button class="delete"
+                            style="width:20%; float:right"
+                            ng-disabled="!neighbour"
+                            ng-click="ctrl.removeNeighbour(key,neighbour); neighbour=''"
+                        >-</button>
+                        <button style="width:20%; float:right"
+                            ng-disabled="!neighbour"
+                            ng-click="ctrl.addNeighbour(key,neighbour); neighbour=''"
+                        >+</button>
+                    </td>
+                </tr>
+            </table>
+            <div>
+                <div>   
+                    <button 
+                        style="width:100%"
+                        ng-disabled="!newVertex"
+                        ng-click="ctrl.addNewVertex(newVertex);newVertex=''"
+                    >+++ ADICIONAR NOVO VERTICE +++</button>
+                </div>
+                <div>   
+                    
+                    <input style="width:100%"
+                        placeholder=" =====>>> ANTES DIGITE O NOME DO VERTICE <<<===== "
+                        ng-model="newVertex"
+                    ></input>
+                </div>
+            </div>
+            
+        </div>
+        
+        <script type="text/javascript" src="js/angular/angular.min.js"></script>	
+        <script type="text/javascript" src="classes/vertice.js"></script>
+        <script type="text/javascript" src="classes/grafo.js"></script>
+        <script type="text/javascript" src="main/main.js"></script>
+    </body>
+</html>
+
